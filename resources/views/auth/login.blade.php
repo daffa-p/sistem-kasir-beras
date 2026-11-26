@@ -317,7 +317,7 @@
     <main class="login-layout">
         <section class="login-panel" aria-label="Form login RiceERP">
             <div class="login-inner">
-                <a href="{{ url('/login') }}" class="brand" aria-label="RiceERP beranda">
+                <a href="{{ route('login') }}" class="brand" aria-label="RiceERP beranda">
                     <span class="brand-mark" aria-hidden="true">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.5 4.5C12.1 4.7 7.1 7.1 6.2 12.1c-.5 2.8 1.2 5.1 3.7 5.1 5.6 0 8.5-6.2 8.6-12.7Z" fill="currentColor" opacity=".95"/>
@@ -339,7 +339,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ url('/login') }}">
+                <form method="POST" action="{{ route('login.process') }}">
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">USERNAME</label>
@@ -378,12 +378,11 @@
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center justify-content-between mb-4 mt-3">
+                    <div class="d-flex align-items-center mb-4 mt-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="remember" name="remember">
+                            <input class="form-check-input" type="checkbox" value="1" id="remember" name="remember" @checked(old('remember'))>
                             <label class="form-check-label" for="remember">Ingat Saya</label>
                         </div>
-                        <a class="forgot-link" href="{{ url('/forgot-password') }}">Lupa Password?</a>
                     </div>
 
                     <button type="submit" class="btn btn-login w-100">
