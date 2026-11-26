@@ -6,20 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('pengguna', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pengguna');
+            $table->string('nama', 100);
+            $table->string('username', 50)->unique();
+            $table->string('password', 255);
+            $table->string('role', 20)->index();          // admin, kasir, pemilik
+            $table->string('status_akun', 20)->default('aktif'); // aktif, nonaktif
+            $table->string('no_telp', 20)->nullable();
+            $table->string('foto_profil', 255)->nullable(); // path file
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('pengguna');
