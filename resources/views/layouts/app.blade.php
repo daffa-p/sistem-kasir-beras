@@ -177,7 +177,10 @@
             <div class="rice-brand d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <span class="rice-brand-icon">
-                        <i class="bi bi-flower1"></i>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.5 4.5C12.1 4.7 7.1 7.1 6.2 12.1c-.5 2.8 1.2 5.1 3.7 5.1 5.6 0 8.5-6.2 8.6-12.7Z" fill="currentColor" opacity=".95"/>
+                            <path d="M5 19.5c2.4-4.2 5.5-6.7 9.8-9.3" stroke="#DCEFE4" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
                     </span>
                     <div>
                         <div class="fw-bold lh-1 fs-6">Kasir Beras</div>
