@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PenggunaController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +23,13 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+// Manajemen Data Pengguna (otorisasi Admin melalui PenggunaPolicy)
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('pengguna', PenggunaController::class);
+        Route::patch('pengguna/{pengguna}/status', [PenggunaController::class, 'toggleStatus'])
+            ->name('pengguna.toggle-status');
+    });
