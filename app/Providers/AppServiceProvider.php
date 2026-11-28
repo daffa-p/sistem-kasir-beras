@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use App\Contracts\Repositories\PenggunaRepositoryInterface;
+use App\Contracts\Services\ImageStorageInterface;
+use App\Models\Pengguna;
+use App\Policies\PenggunaPolicy;
+use App\Repositories\EloquentPenggunaRepository;
+use App\Services\PublicImageStorageService;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(PenggunaRepositoryInterface::class, EloquentPenggunaRepository::class);
+        $this->app->bind(ImageStorageInterface::class, PublicImageStorageService::class);
     }
 
     /**
@@ -19,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::policy(Pengguna::class, PenggunaPolicy::class);
     }
 }
